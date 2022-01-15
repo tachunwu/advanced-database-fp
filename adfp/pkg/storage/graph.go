@@ -15,7 +15,7 @@ type GraphStorage struct {
 }
 
 // Schema
-type location struct {
+type loc struct {
 	Type   string    `json:"type,omitempty"`
 	Coords []float64 `json:"coordinates,omitempty"`
 }
@@ -25,7 +25,7 @@ type Place struct {
 	Name     string    `json:"name,omitempty"`
 	Comments []Comment `json:"comment,omitempty"`
 	Category string    `json:"category,omitempty"`
-	Location location  `json:"loc,omitempty"`
+	Location loc       `json:"loc,omitempty"`
 	DType    []string  `json:"dgraph.type,omitempty"`
 }
 
@@ -43,7 +43,7 @@ type User struct {
 	Id                string   `json:"id,omitempty"`
 	Name              string   `json:"name,omitempty"`
 	Collection_places []Place  `json:"collection_places,omitempty"`
-	Location          location `json:"location,omitempty"`
+	Location          loc      `json:"loc,omitempty"`
 	DType             []string `json:"dgraph.type,omitempty"`
 }
 
@@ -52,6 +52,7 @@ func NewGraphStorage() *GraphStorage {
 	if err != nil {
 		log.Fatal(err)
 	}
+
 	return &GraphStorage{
 		Client: dgo.NewDgraphClient(
 			api.NewDgraphClient(d),
@@ -66,7 +67,7 @@ func (s *GraphStorage) CreateUser(ctx context.Context, username string, lat floa
 	user := User{
 		DType: []string{"User"},
 		Name:  username,
-		Location: location{
+		Location: loc{
 			Type:   "Point",
 			Coords: []float64{lat, lng},
 		},
@@ -135,7 +136,7 @@ func (s *GraphStorage) CreatePlace(ctx context.Context, name string, category st
 		DType:    []string{"Place"},
 		Name:     name,
 		Category: category,
-		Location: location{
+		Location: loc{
 			Type:   "Point",
 			Coords: []float64{lat, lng},
 		},
