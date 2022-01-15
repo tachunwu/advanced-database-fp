@@ -1,4 +1,6 @@
 # advanced-database-fp
+![](https://github.com/tachunwu/advanced-database-fp/blob/master/doc/architecture.png)
+
 ## Introduction
 This project is my Advanced Database Final Project when I study at NTHU. In this system, I'm using two different databases to handle different workloads. Furthermore, to perform requests properly, I also use the streaming system to decompose the system into distributed.
 
