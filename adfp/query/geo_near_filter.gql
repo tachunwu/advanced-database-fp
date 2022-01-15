@@ -1,0 +1,20 @@
+query GeoNeaFilterQuery {
+  queryPlace(
+    filter: {
+      location: {
+        near: {
+          distance: 4000
+          coordinate: { latitude: 25.033964, longitude: 121.564468 }
+        }
+      }
+      category: { eq: "MRT_Station" }
+    }
+  ) {
+    name
+    category
+    location {
+      latitude
+      longitude
+    }
+  }
+}

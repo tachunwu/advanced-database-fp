@@ -1,0 +1,24 @@
+type Place  {
+	id: ID! 
+	name: String!@id @search(by:[fulltext]) 
+	comments: [Comment] 
+	location: Point! @search 
+	category: String! @search(by:[hash]) 
+}
+
+type Comment  {
+	id: ID 
+	user: User! 
+	place: Place! 
+	context: String @search(by:[fulltext]) 
+	star: Int 
+	is_pay: Boolean! 
+}
+
+type User  {
+	id: ID! 
+	name: String! @id
+	location: Point! @search 
+	collection_places: [Place] 
+}
+

@@ -1,0 +1,15 @@
+query FullTextQuery {
+  queryComment(filter: { context: { alloftext: "亮" } }) {
+    place {
+      category
+      location {
+        latitude
+        longitude
+      }
+      name
+    }
+    user {
+      name
+    }
+  }
+}

@@ -1,0 +1,20 @@
+mutation AddUserAndComment {
+  addUser(
+    input: {
+      name: "User_A"
+      location: { longitude: 121.564468, latitude: 25.033964 }
+    }
+  ) {
+    numUids
+  }
+  addComment(
+    input: {
+      user: { name: "User_A" }
+      place: { name: "松山機場" }
+      is_pay: false
+      context: "燈光明亮"
+    }
+  ) {
+    numUids
+  }
+}

@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+option go_package = "pb/adfp";
+
+service ADFPService{
+    rpc CreateUser(CreateUserRequest) returns (User){};
+    rpc CreatePlace(CreatePlaceRequest) returns (Place){};
+    rpc CreateComment(CreateCommentRequest) returns (Comment){};
+}
+
+message Comment {
+    string name = 1;
+    string context = 2;
+    bool is_pay =3;
+    User user = 4;
+    Place place = 5;
+}
+
+message CreateCommentRequest {
+    string parent = 1;
+    Comment comment = 2;
+}
+
+message Place {
+    string name = 1;
+    string category = 2;
+    LatLng location = 3;
+}
+
+message CreatePlaceRequest {
+    string parent = 1;
+    Place place = 2;
+}
+
+message LatLng {
+    double latitude = 1;
+    double longitude = 2;
+}
+
+message User {
+    string name = 1;
+    int64 balance = 2;
+    LatLng location = 3;
+}
+
+message CreateUserRequest {
+    string parent = 1;
+    User user = 2;
+}
