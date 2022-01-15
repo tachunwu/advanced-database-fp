@@ -1,4 +1,4 @@
-# advanced-database-fp
+# Advanced Database Final Project
 ![](https://github.com/tachunwu/advanced-database-fp/blob/master/doc/architecture.png)
 
 ## Introduction
